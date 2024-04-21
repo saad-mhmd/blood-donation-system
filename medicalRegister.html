@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <!-- Font Nunito -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Animate CSS -->
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="shortcut icon" href="imgs/favicon.ico" />
+    <title>Register - Bleed To Save</title>
+    <style>
+        body{
+            background-image: linear-gradient(#fceeef, #ca9093, white);
+            height: 100vh;
+            overflow-y: hidden;
+        }
+        .bg-card-testing{
+            background-image: linear-gradient(white,rgb(230, 221, 221));
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav id="mainNavbar"  class="navbar navbar-expand-lg navbar-light fixed-top py-0">
+        <div class="container">
+            <a href="index.html" class="img-fluid navbar-brand"><img src="imgs/nav-logo.png" class="img-hover"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="justify-content-end collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item pr-2">
+                        <a href="#intro-slide" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item pr-2">
+                        <a href="#counter" class="nav-link">About us</a>
+                    </li>
+                    <li class="nav-item pr-2">
+                        <a href="canyoudonate.html" class="nav-link">can you donate?</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Register
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="donorInfoForm.html">As a Donor</a>
+                            <a class="dropdown-item" href="register.html">As a Medical center</a>
+                        </div>
+                    </li>
+                    <li class="nav-item pr-2">
+                        <a href="register.html" class="nav-link">login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register -->
+
+    <h1 class="display-4 section-heading form-gap mb-5 text-center">
+      Medical  Registration Form
+    </h1>
+    <div style="display: flex; flex-direction: column; justify-content: center;align-items: center;">
+    <div class="container" style=" display: flex; justify-content: center; align-items: center;;">
+    <section class="container col-5  ">
+      <div class=" mb-5 login-form card shadow-lg bg-card-testing " style="border-radius: 0px 25px 25px 0px;" >
+        <div class="card-body my-4  ">
+          <div class="container ">
+            <form>
+              <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="first-name"
+                  placeholder="First Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="first-name">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="last-name"
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="cnic">CNIC Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="cnic"
+                  pattern="[0-9]{5}-[0-9]{5}-[0-9]{5}"
+                  aria-describedby="cnicHelp"
+                  placeholder="CNIC Number"
+                  required
+                />
+                <small id="cnicHelp" class="mt-2 form-text text-muted"
+                  >Format: XXXXX-XXXXXXX-X</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  minlength="8"
+                  required
+                />
+              </div>
+            
+            </form>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container col-5">
+        <div class=" mb-5 login-form card shadow-lg bg-card-testing " style="border-radius: 25px 0px 0px 25px;" >
+          <div class="card-body my-4 ">
+            <div class="container b">
+              <form>
+                <div class="form-group">
+                  <label for="first-name">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="first-name"
+                    placeholder="First Name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="first-name">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="last-name"
+                    placeholder="Last Name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cnic">CNIC Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="cnic"
+                    pattern="[0-9]{5}-[0-9]{5}-[0-9]{5}"
+                    aria-describedby="cnicHelp"
+                    placeholder="CNIC Number"
+                    required
+                  />
+                  <small id="cnicHelp" class="mt-2 form-text text-muted"
+                    >Format: XXXXX-XXXXXXX-X</small
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password"
+                    minlength="8"
+                    required
+                  />
+                </div>
+              
+              </form>
+            
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <button class="btn  shadow-lg " id="registerBtn" style=" padding: 12px 18px; border-radius: 12px;background-color: #df5f65;color: white;font-size: 1.7rem;font-weight: 800;letter-spacing: 1px; " >Register Now</button>
+</div>
+    
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
+        authDomain: "fir-basics-569a0.firebaseapp.com",
+        projectId: "fir-basics-569a0",
+        storageBucket: "fir-basics-569a0.appspot.com",
+        messagingSenderId: "971203436246",
+        appId: "1:971203436246:web:11d5aa9c6a02ee8dc6f377",
+        measurementId: "G-LGY93EHL4E",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+        getDocs, //get all documents inside one collection
+        setDoc,
+        collection,
+        addDoc,
+        updateDoc,
+        deleteDoc,
+        deleteField,
+        query,
+        where,
+        orderBy,
+      } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+      const db = getFirestore();
+      const auth = getAuth(app);
+      //   --------------------------------------------------------------------------------
+
+      document.getElementById("registerBtn").addEventListener("click", () => {
+        const firstName = document.getElementById("first-name").value;
+        const lastName = document.getElementById("last-name").value;
+        const cnic = document.getElementById("cnic").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        console.log("firstname", firstName);
+        console.log("lastname", lastName);
+        console.log("cnic", cnic);
+        console.log("email", email);
+        console.log("password", password);
+        
+         createUserWithEmailAndPassword(auth, email, password)
+           .then((credenitails) => {
+             console.log("created success")
+            addDocWithSpecificId("users","test",firstName,lastName,cnic,email,password)
+
+         })
+           .catch((err) => {
+             console.log(err);
+          });
+      });
+
+      async function addDocWithSpecificId(collectionName, documentName,fname,lname,cn,emaill,pass) {
+        let ref = doc(db, collectionName, documentName);
+
+        const docref = await setDoc(ref, {
+          firstname: fname,
+          lastName: lname,
+          cnic: cn,
+          email: emaill,
+          password: pass
+        })
+          .then(() => {
+            console.log("added done");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    </script>
+  </body>
+</html>
