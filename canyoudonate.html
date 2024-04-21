@@ -15,6 +15,22 @@
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <style>
+      #herosSection{
+        margin-top: 220px;
+      }
+      .backgrey{
+        background-color: rgba(212, 219, 224, 0.795);
+        
+      }
+      body{
+        background-image: linear-gradient(#fceeef,#ca9093,white);
+      }
+      .backgrpund-round{
+        border-radius: 50px;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
     <nav
@@ -61,33 +77,35 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Login
+                Register
               </a>
               <div
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <a class="dropdown-item" href="donorLogin.html">As a Donor</a>
-                <a class="dropdown-item" href="recipientLogin.html"
-                  >As a Recipiet</a
+                <a class="dropdown-item" href="donorInfoForm.html">As a Donor</a>
+                <a class="dropdown-item" href="register.html"
+                  >As a Medical center</a
                 >
               </div>
             </li>
             <li class="nav-item pr-2">
-              <a href="register.html" class="nav-link">Register</a>
+              <a href="login.html" class="nav-link">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
+    <hr>
     <!-- heros -->
     <div
-    class="container my-5 mb-5 mt-5"
-   style="background-image: linear-gradient(#fceeef,white);"
+    id=""
+    class="container my-5 mb-5 "
   >
     <div
-      class="row p-4 pb-2 my-5 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
+
+      class="row backgrpund-round backgrey p-4 pb-2 my-5 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
     >
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
         <h1
@@ -122,20 +140,20 @@
   </div>
    <!--HERO SECOND-->
    <div
-   style="
-     background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
-   "
-   class="container mt-5"
+   
+
+   class="container mt-5 "
  >
    <div
-     class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
+     class="row backgrpund-round backgrey pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
    >
      <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
        <img
          class="rounded-lg-3"
          src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/canyou.png"
          alt=""
-         width="780"
+         width="100%"
+         
        />
      </div>
      <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
@@ -148,26 +166,31 @@
        <h3 class="text-primary">
          FIND OUT IF YOU ARE ABLE GIVE BLOOD FOR THE FIRST TIME.
        </h3>
-       <h2>To donate blood you will need to :.</h2>
-       <pre class="text-secondary">
- • Be generally fit and well
- • Be aged between 17 and 65
- • Weigh between 7 stone 12 lbs (50kg) and 25 stone (158kg)
- • Have suitable veins (we will check these before you donate)
- • Meet all donor eligibility criteria (we will check this before you donate)</pre
+       <h2>To donate blood you will need to :</h2>
+       <ul style="list-style: circle;" class="text-secondary">
+        <li> Be generally fit and well
+        </li>
+        <li>Be aged between 17 and 65
+        </li>
+        <li>Weigh between 7 stone 12 lbs (50kg) and 25 stone (158kg)
+        </li>
+        <li>Have suitable veins (we will check these before you donate)
+        </li>
+        <li> Meet all donor eligibility criteria (we will check this before you donate)</li>
+        
+ </ul
        >
      </div>
    </div>
  </div>
  <!--Hero THIRD-->
  <div
- class="container mt-5"
- style="
-   background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
+ class="container mt-5 "
  "
+
 >
  <div
-   class="row p-4 pb-2 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
+   class="row backgrpund-round backgrey p-4 pb-2 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
  >
    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
      <h1
@@ -179,25 +202,25 @@
      <p class="lead text-secondary">
        <h3 class="text-primary">You can't donate blood if you:</h3>
  
-         <pre class="text-secondary">
- • Are a hepatitis B carrier
-
- • Are a hepatitis C carrier
-             
- • Have some heart conditions
-             
- • Have tested positive for HIV
-             
- • Have had an organ transplant
-             
- • Have had most types of cancer
-             
- • Have received blood, platelets, plasma or any other blood products after 1 January 1980
-             
- • Have injected non-prescribed drugs including body-building and injectable tanning   agents. You may be able to give if a doctor prescribed the drugs
-             
- • There are other medical conditions that may mean you can't donate...
-         </pre>
+         <ol class="text-secondary">
+<li> Are a hepatitis B carrier
+</li>
+<li> Are a hepatitis C carrier
+</li>             
+<li> Have some heart conditions
+</li>             
+<li> Have tested positive for HIV
+</li>             
+<li> Have had an organ transplant
+</li>             
+<li> Have had most types of cancer
+</li>             
+<li> Have received blood, platelets, plasma or any other blood products after 1 January 1980
+</li>             
+<li> Have injected non-prescribed drugs including body-building and injectable tanning   agents. You may be able to give if a doctor prescribed the drugs
+</li>             
+<li> There are other medical conditions that may mean you can't donate...
+</li>         </ol>
      </p>
    </div>
    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
@@ -205,28 +228,27 @@
        class="rounded-lg-3"
        src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/about.png"
        alt=""
-       width="780"
-       style="position: relative; right: 100px"
+      width="100%"
+      height="700px"
      />
    </div>
  </div>
 </div>
  <!--Hero fourth-->
- <div
-   style="
-     background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
-   "
-   class="container mt-5"
+ <div  
+   
+   class="container mt-5 "
  >
    <div
-     class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
+     class="row pb-0 backgrpund-round backgrey pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
    >
      <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
        <img
          class="rounded-lg-3"
          src="https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/canyou.png"
          alt=""
-         width="780"
+         width="100%"
+        style="height: 80%;" 
        />
      </div>
      <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
@@ -236,46 +258,49 @@
        >
        Who might have to wait to donate blood ?
        </h1>
-       <h3 class="text-primary">
-         FIND OUT IF YOU ARE ABLE GIVE BLOOD FOR THE FIRST TIME.
-       </h3>
-       <h2>To donate blood you will need to :.</h2>
-       <p class="text-secondary">
-         There are some health, travel and lifestyle reasons that may stop you from being able to donate blood on a temporary basis.
-If you are not sure you can donate, please contact us to discuss your situation.
+       <ol class="text-secondary">
+        <li>        First-Time Donors: Check eligibility.
+        </li>
+        <li>Health, Travel, and Lifestyle Factors: Certain reasons may temporarily prevent donation.</li>
+        <li>
+          Sexual Activity: Wait up to three months if:
+          <ul>
+            <li>Had anal sex with a new partner.</li>
+            <li>Recently finished PrEP or PEP.</li>
+            <li>Had sexual contact with individuals who are HIV, HTLV, hepatitis B or C positive, syphilis positive, or involved in transactional sex or drug use.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Other Reasons for Waiting: Wait if you:
+          <ul><li>
+            Feel ill.
 
-Sexual activity that means you may have to wait
-You may have to wait up to three months before you can donate if:
-• You have had anal sex with a new partner in the last three months
-• You finished taking Pre-Exposure Prophylaxis (PrEP) or Post-Exposure    Prophylaxis (PEP) in the last threemonths
-In the last three months you have had sexual contact with a partner who is:
-• HIV positive
-• HTLV positive
-• A hepatitis B carrier
-• A hepatitis C carrier
-• Syphilis positive
-• Has received money or drugs for sex
-• Has injected non-prescribed drugs including body-building and injectable   tanning agents
-Other reasons why you might need to wait
-You will need to wait before you can donate if you:
-• Feel ill
-• Are pregnant or had a baby in the last 6 months
-• Have recently got a tattoo or piercing
-• Are undergoing assessment or investigations for a medical condition. For   example, heart condition
-       </p>
+          </li>
+        
+        <li>        Are pregnant or gave birth in the last 6 months.
+        </li>
+        <li>        Recently got a tattoo or piercing.
+        </li>
+        <li>        Undergoing assessment or investigations for a medical condition like a heart condition.
+        </li>
+        </ul>
+
+
+        </li>
+
+       </ol>
      </div>
    </div>
   </div>
 
  <!--Hero FOURTH-->
  <div
- class="container mt-5"
- style="
-   background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
- "
+ class="container mt-5 "
+
 >
  <div
-   class="row p-4 pb-2 px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
+   class="row p-4 pb-2 backgrpund-round backgrey px-3 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
  >
    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
      <h1
@@ -305,10 +330,8 @@ You will need to wait before you can donate if you:
    </div>
  <!--HERO FIFTH-->
  <div
-   style="
-     background-image: url('https://wh1t3-e4gl3.github.io/project-red-stream/assets/images/hero-bg.png');
-   "
-   class="container mt-5"
+   
+   class="container mt-5 backgrey"
  >
    <div
      class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg d-flex justify-content-between"
@@ -363,5 +386,9 @@ You will need to wait before you can donate if you:
     <script>
         new WOW().init();
     </script>
-  </body>
+<script>
+
+
+</script>
+</body>
 </html>
