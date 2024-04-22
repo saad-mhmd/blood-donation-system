@@ -31,10 +31,14 @@
     <link rel="shortcut icon" href="imgs/favicon.ico" />
     <title>Register - Bleed To Save</title>
     <style>
+        *{
+          margin: 0;
+          padding: 0;
+        }
         body{
             background-image: linear-gradient(#fceeef, #ca9093, white);
             height: 100vh;
-            overflow-y: hidden;
+            
         }
         .bg-card-testing{
             background-image: linear-gradient(white,rgb(230, 221, 221));
@@ -44,7 +48,7 @@
 
   <body>
     <!-- Navbar -->
-    <nav id="mainNavbar"  class="navbar navbar-expand-lg navbar-light fixed-top py-0">
+    <nav id="mainNavbar" style="z-index: 12;background-color:#f1e3e4;"  class="navbar navbar-expand-lg navbar-light fixed-top py-0">
         <div class="container">
             <a href="index.html" class="img-fluid navbar-brand"><img src="imgs/nav-logo.png" class="img-hover"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,14 +83,21 @@
     </nav>
 
     <!-- Register -->
+<div class="container">
+  <h1 style="z-index: -11;" class="display-4 section-heading form-gap mb-5 text-center">
+    Medical  Registration Form
+  </h1>
 
-    <h1 class="display-4 section-heading form-gap mb-5 text-center">
-      Medical  Registration Form
-    </h1>
+  </div>
+
+</div>
+    
     <div style="display: flex; flex-direction: column; justify-content: center;align-items: center;">
-    <div class="container" style=" display: flex; justify-content: center; align-items: center;;">
-    <section class="container col-5  ">
-      <div class=" mb-5 login-form card shadow-lg bg-card-testing " style="border-radius: 0px 25px 25px 0px;" >
+
+      <div class="container col-sm-12 col-md-11 col-lg-9" style=" display: flex; justify-content: center; align-items: center;;">
+  
+        <section class="container col-md-6  col-sm-10 col-lg-5 ">
+      <div class=" mb-5 login-form card shadow-lg bg-card-testing w-60 h-50 " style="border-radius: 0px 25px 25px 0px;" >
         <div class="card-body my-4  ">
           <div class="container ">
             <form>
@@ -153,7 +164,7 @@
         </div>
       </div>
     </section>
-    <section class="container col-5">
+    <section class="container col-md-6 col-sm-10 col-lg-5">
         <div class=" mb-5 login-form card shadow-lg bg-card-testing " style="border-radius: 25px 0px 0px 25px;" >
           <div class="card-body my-4 ">
             <div class="container b">

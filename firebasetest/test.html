@@ -11,12 +11,18 @@
     <span>password</span>
     <input type="password" name="" id="password" />
     <button id="submit">submit</button>
+    <!-- HTML -->
+    <button id="googleSignInButton">Sign in with Google</button>
+
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
       import {
         getAuth,
         createUserWithEmailAndPassword,
+        GoogleAuthProvider,
+        signInWithPopup
+    
       } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
       const firebaseConfig = {
         apiKey: "AIzaSyB5piM8HyYATgWqMPi2U6bwAVz94Q189Bs",
@@ -46,8 +52,21 @@
         orderBy,
       } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
       const db = getFirestore();
-      const auth = getAuth(app);
+      const auth = getAuth();
+     
       //----------------------------------------------------------------------------//
+      // JavaScript
+      const googleProvider = new GoogleAuthProvider();
+      googleSignInButton.addEventListener("click", () => {
+            signInWithPopup(auth, googleProvider)
+                .then((result) => {
+                    console.log(result);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        });  
+    
 
       document.getElementById("submit").addEventListener("click", () => {
         let email = document.getElementById("email").value;
