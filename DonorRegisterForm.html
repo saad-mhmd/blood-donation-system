@@ -257,7 +257,7 @@
             const lastName = user.lastName;
             const email = user.email;
             googleproviderSaveData("users",firstName,lastName,email)
-            window.location="DonorHomePage.html"
+            // window.location="DonorHomePage.html"
             // const photoURL = user.photoURL;
             // const emailVerified = user.emailVerified;
             // const phoneNumber =user.phoneNumber
@@ -285,6 +285,8 @@
           
         })
           .then(() => {
+            window.location="DonorHomePage.html"
+
             console.log("added done to database");
             
            
@@ -326,7 +328,7 @@
         })
           .then(() => {
             console.log("added done to database");
-            window.location="DonorHomePage.html"
+            window.location=""
            
           })
           .catch((err) => {
