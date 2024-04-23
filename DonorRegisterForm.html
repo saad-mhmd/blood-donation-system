@@ -250,7 +250,8 @@
       document.getElementById("googleRegister").addEventListener("click",()=>{
         signInWithPopup(auth, googleProvider)
                 .then((result) => {
-                    console.log(result);
+                    console.log(result.UserCredentialImpl.tokenResponse.email
+);
                 })
                 .catch((error) => {
                     console.error(error);
