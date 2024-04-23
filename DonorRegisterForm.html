@@ -248,10 +248,11 @@
         console.log('facebook')
       })
       document.getElementById("googleRegister").addEventListener("click",()=>{
+        let test=""
         signInWithPopup(auth, googleProvider)
                 .then((result) => {
-                    console.log(result
-);
+                    test=result;
+                    console.log(test)
                 })
                 .catch((error) => {
                     console.error(error);
