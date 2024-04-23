@@ -251,11 +251,20 @@
         let test=""
         signInWithPopup(auth, googleProvider)
                 .then((result) => {
-                    test=result;
-                    console.log(test)
+                  const user = result.user;
+            // Extract user details
+            const displayName = user.displayName;
+            const email = user.email;
+            const photoURL = user.photoURL;
+            const emailVerified = user.emailVerified;
+            console.log("User Display Name:", displayName);
+            console.log("User Email:", email);
+            console.log("User Photo URL:", photoURL);
+            console.log("Is Email Verified:", emailVerified);
+                   console.log(result) 
                 })
                 .catch((error) => {
-                    console.error(error);
+                    console.log(error);
                 });
         console.log("google")
       })
