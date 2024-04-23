@@ -251,12 +251,19 @@
         let test=""
         signInWithPopup(auth, googleProvider)
                 .then((result) => {
-                  const user = result.user;
+                  const user = result._tokenResponse;
             // Extract user details
-            const displayName = user.displayName;
+            const firstName = user.firstName;
+            const lastName = user.lastName;
             const email = user.email;
-            const photoURL = user.photoURL;
-            const emailVerified = user.emailVerified;
+            googleproviderSaveData("users",firstName,lastName,email)
+            
+            // const photoURL = user.photoURL;
+            // const emailVerified = user.emailVerified;
+            // const phoneNumber =user.phoneNumber
+           
+
+
             console.log("User Display Name:", displayName);
             console.log("User Email:", email);
             console.log("User Photo URL:", photoURL);
@@ -268,6 +275,24 @@
                 });
         console.log("google")
       })
+     async function googleproviderSaveData(collectionName,firstName,lastName,email){
+      let ref = doc(db, collectionName, email);
+
+        const docref = await setDoc(ref, {
+          firstname: firstName,
+          lastName: lastName,
+          email: emaill,
+          
+        })
+          .then(() => {
+            console.log("added done to database");
+            window.location="DonorHomePage.html"
+           
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+     }
 
       document.getElementById("registerBtn").addEventListener("click", () => {
         const firstName = document.getElementById("first-name").value;
