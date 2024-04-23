@@ -257,7 +257,7 @@
             const lastName = user.lastName;
             const email = user.email;
             googleproviderSaveData("users",firstName,lastName,email)
-            
+            window.location="DonorHomePage.html"
             // const photoURL = user.photoURL;
             // const emailVerified = user.emailVerified;
             // const phoneNumber =user.phoneNumber
@@ -281,12 +281,12 @@
         const docref = await setDoc(ref, {
           firstname: firstName,
           lastName: lastName,
-          email: emaill,
+          email: email,
           
         })
           .then(() => {
             console.log("added done to database");
-            window.location="DonorHomePage.html"
+            
            
           })
           .catch((err) => {
