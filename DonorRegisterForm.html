@@ -277,7 +277,6 @@
       })
      async function googleproviderSaveData(collectionName,firstName,lastName,email){
       let ref = doc(db, collectionName, email);
-
         const docref = await setDoc(ref, {
           firstname: firstName,
           lastName: lastName,
@@ -286,7 +285,7 @@
         })
           .then(() => {
             window.location="donorhomepage.html"
-
+            localStorage.setItem("email",email)
             console.log("added done to database");
             
            
