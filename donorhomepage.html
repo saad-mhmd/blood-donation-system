@@ -37,7 +37,7 @@
     <br>
 
     <!-- carousel -->
-    <div class="col container h-30 ">
+    <div class="col container h-30 test">
         <div id="test" class="my-5 container  d-flex justify-content-center">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                <div class="carousel-inner">
@@ -73,25 +73,25 @@
     
     <!-- cards -->
     <div class=" d-flex gap-2 row  justify-content-center">
-        <div class="card col-lg-4 col-md-6 col-sm-12 p-4" style="width: 18rem;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwtScHAD1aAgqkJvLAwfVV3MPkK_zN1nCzBxWTbuPv8w&s" class="card-img-top" alt="...">
+        <div id="donatecard"  class="card col-lg-4 col-md-6 col-sm-12 p-4" style="width: 18rem;">
+            <img class="h-50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwtScHAD1aAgqkJvLAwfVV3MPkK_zN1nCzBxWTbuPv8w&s" class="card-img-top" alt="...">
             <div class="card-body ">
                 <h1 class="title-style" >Donate Blood</h1>
               <p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
-          <div class="card col-lg-4 col-md-6 col-sm-12 p-4" style="width: 18rem;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGq-7Dx-_Q5Hbn2zaJQK1zlSGjBV4vmyEfhQ&s" class="card-img-top" alt="...">
+          <div  id="medicalinfocard" class="card col-lg-4 col-md-6 col-sm-12 p-4" style="width: 18rem;">
+            <img class="h-50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Qnn4tG_dTi6S9NJOie8E2W2qKJq7ZgNWOw&s" class="card-img-top" alt="...">
             <div class="card-body">
-                <h1 class="title-style" >title 2</h1>
+                <h1 class="title-style" >medical info</h1>
 
               <p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
-          <div class="card col-lg-4 col-md-6 col-sm-12 p-4 " style="width: 18rem;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOV1yncgK5JEZQbspnBt4TE0mx35tvEAI8cQ&s" class="card-img-top" alt="...">
+          <div id="qrcard" class="card col-lg-4 col-md-6 col-sm-12 p-4 " style="width: 18rem;">
+            <img class="h-50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOV1yncgK5JEZQbspnBt4TE0mx35tvEAI8cQ&s" class="card-img-top" alt="...">
             <div class="card-body">
-                <h1 class="title-style" >title 3</h1>
+                <h1 class="title-style" >QR code </h1>
 
               <p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
@@ -169,6 +169,18 @@
   
           
       </script>
+      <script>
+      document.getElementById("donatecard").addEventListener("click",()=>{
+        window.location="./Donor/donateblood.html"
+      })
+      document.getElementById("medicalinfocard").addEventListener("click",()=>{
+        window.location="./Donor/medicalinfo.html"
+      })
+      document.getElementById("qrcard").addEventListener("click",()=>{
+        window.location="./Donor/qrpage.html"
+      })
+    
+    </script>
       <!-- <script src="./javascript/qoutesapi.js"></script> -->
 </body>
 </html>

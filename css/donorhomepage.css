@@ -1,10 +1,11 @@
 *{
     
 }
+body{overflow-x: hidden;}
 #test{
-    margin-top: 50px;
+    /* margin-top: 50px;
     height: 15vw;
-    width: 50%;
+    width: 50%; */
 }
 #test img{
     object-fit: contain;

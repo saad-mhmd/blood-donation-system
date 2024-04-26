@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha512-ZDSPMa/JM1D+7kdg2x3BsruQ6T/JpJo3jWDWkCZsP+5yVyp1KfESqLI+7RqB5k24F7p2cV7i2YHh/890y6P6Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div id="qrcode" style="width: 200px;height: 200px;"></div>
+
+  <script>
+    // Function to generate QR code
+    function generateQRCode(text) {
+      var qrCodeDiv = document.getElementById("qrcode");
+      qrCodeDiv.innerHTML = ""; // Clear any existing QR code
+
+      // Generate QR code with the provided text
+      var qr = qrcode(0, 'M'); // Create QRCode object
+      qr.addData(text); // Add data to QRCode
+      qr.make(); // Generate QRCode
+      var qrImage = qr.createImgTag(); // Get QRCode image tag
+      qrCodeDiv.innerHTML = qrImage; // Display QRCode image
+    }
+
+    // Example: Generate QR code with text "Hello, World!"
+    generateQRCode("Hello, World!");
+  </script>
+</body>
+</html>

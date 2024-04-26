@@ -328,6 +328,7 @@
           password: pass
         })
           .then(() => {
+            localStorage.setItem("email",email)
             console.log("added done to database");
             window.location=""
            
