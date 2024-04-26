@@ -78,6 +78,9 @@ if (googleRegisterDonorBtn) {
         addUserInfo("donor", email);
         addMedicalInfo(email, firstName, lastName, "");
         console.log(result);
+        localStorage.setItem("email",email)
+        localStorage.setItem("userType","medical")
+        window.location.href="../donorHomePage.html" 
       })
       .catch((error) => {
         console.log(error);
@@ -102,6 +105,8 @@ if (googleRegisterMedicalBtn) {
         const email = user.email || "none";
         addUserInfo("donor", email);
         addMedicalInfo(email, firstName, lastName, "");
+        window.location.href="../Medical/medicalhomepage.html"
+
         console.log(result);
       })
       .catch((error) => {
@@ -117,6 +122,18 @@ function createNewUser(email, password, firstName, lastName, phoneNumber,userTyp
       console.log("created success");
       addUserInfo(userType, email);
       addMedicalInfo(email, firstName, lastName, phoneNumber);
+      if(userType=="medical"){
+        localStorage.setItem("email",email)
+        localStorage.setItem("userType","medical")
+        window.location.href="../Medical/medicalhomepage.html"
+
+      }else if(userType=="donor"){
+        localStorage.setItem("email",email)
+        localStorage.setItem("userType","medical")
+        window.location.href="../donorHomePage.html"
+    
+      }
+      
     })
     .catch((err) => {
       console.log(err);
@@ -169,6 +186,7 @@ function loginUser(email, password) {
           // Login successful, user information is available in userCredential.user
           const user = userCredential.user;
           console.log("Login successful:", user);
+          loginWindow(email);
           // Redirect or perform further actions here
       })
       .catch((error) => {
@@ -176,3 +194,28 @@ function loginUser(email, password) {
           console.error("Login failed:", error);
       });
 }
+     async function loginWindow(email){
+        let ref = doc(db, "users",email );
+        const docSnap = await getDoc(ref);
+        if (docSnap.exists()) {
+          const userType=docSnap.data().userType
+          if(userType=="medical"){
+            localStorage.setItem("email",email)
+            localStorage.setItem("userType","medical")
+            window.location.href="../Medical/medicalhomepage.html"
+
+          }else if(userType=="donor"){
+            localStorage.setItem("email",email)
+            localStorage.setItem("userType","medical")
+            window.location.href="../donorHomePage.html"
+        
+          }
+
+          console.log(userType);
+        } else {
+          console.log("no data");
+        }
+
+
+
+    }
