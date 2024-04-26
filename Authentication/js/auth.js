@@ -3,6 +3,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebas
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
@@ -150,3 +151,28 @@ async function addMedicalInfo(email, firstName, lastName, phoneNumber) {
 }
 function addMedicalCenterInfo() {}
 
+const loginForm = document.getElementById("login-form");
+if (loginForm) {
+    loginForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form submission
+
+        const email = document.getElementById("email-login").value;
+        const password = document.getElementById("password-login").value;
+
+        // Call loginUser function with email and password
+        loginUser(email, password);
+    });
+}
+function loginUser(email, password) {
+  signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+          // Login successful, user information is available in userCredential.user
+          const user = userCredential.user;
+          console.log("Login successful:", user);
+          // Redirect or perform further actions here
+      })
+      .catch((error) => {
+          // Login failed, handle error
+          console.error("Login failed:", error);
+      });
+}
