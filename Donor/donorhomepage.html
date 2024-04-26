@@ -146,38 +146,18 @@
         const db = getFirestore();
         const auth = getAuth();
         //   --------------------------------------------------------------------------------
-        document.getElementById("test").addEventListener("click",()=>{
-            getSpecificDocument()
-
-        })
-        async function getSpecificDocument() {
-              let ref = doc(db, "users", "mahditalal.789@gmail.com");
-              const docSnap = await getDoc(ref);
-              if (docSnap.exists()) {
-                let x=Object.keys(docSnap.data()).length
-                console.log(x);           
-              } else {
-                console.log("no data");
-              }
-              
-            }
-
-
-
-
-        
-  
-          
+      
+       
       </script>
       <script>
       document.getElementById("donatecard").addEventListener("click",()=>{
-        window.location="./Donor/donateblood.html"
+        window.location="donateblood.html"
       })
       document.getElementById("medicalinfocard").addEventListener("click",()=>{
-        window.location="./Donor/medicalinfo.html"
+        window.location="medicalinfo.html"
       })
       document.getElementById("qrcard").addEventListener("click",()=>{
-        window.location="./Donor/qrpage.html"
+        window.location="qrpage.html"
       })
     
     </script>

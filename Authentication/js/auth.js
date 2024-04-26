@@ -65,74 +65,75 @@ if (medicalRegisterBtn) {
 }
 
 // Check if the element exists before adding the event listener
-const googleRegisterDonorBtn = document.getElementById("google-register-donor");
-if (googleRegisterDonorBtn) {
-  googleRegisterDonorBtn.addEventListener("click", () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const user = result._tokenResponse;
-        // Extract user details
-        const firstName = user.firstName || "";
-        const lastName = user.lastName || "";
-        const email = user.email || "none";
-        addUserInfo("donor", email);
-        addMedicalInfo(email, firstName, lastName, "");
-        console.log(result);
-        localStorage.setItem("email",email)
-        localStorage.setItem("userType","medical")
-        window.location.href="../donorHomePage.html" 
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log("google");
-    // Add your logic here
-  });
-}
+// const googleRegisterDonorBtn = document.getElementById("google-register-donor");
+// if (googleRegisterDonorBtn) {
+//   googleRegisterDonorBtn.addEventListener("click", () => {
+//     signInWithPopup(auth, googleProvider)
+//       .then((result) => {
+//         const user = result._tokenResponse;
+//         // Extract user details
+//         const firstName = user.firstName || "";
+//         const lastName = user.lastName || "";
+//         const email = user.email || "none";
+//         addUserInfo("donor", email);
+//         addMedicalInfo(email, firstName, lastName, "");
+//         console.log(result);
+//         localStorage.setItem("email",email)
+//         localStorage.setItem("userType","medical")
+//         window.location.href="../donorHomePage.html" 
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//     console.log("google");
+//     // Add your logic here
+//   });
+// }
 
-// Check if the element exists before adding the event listener
-const googleRegisterMedicalBtn = document.getElementById(
-  "google-register-medical"
-);
-if (googleRegisterMedicalBtn) {
-  googleRegisterMedicalBtn.addEventListener("click", () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const user = result._tokenResponse;
-        // Extract user details
-        const firstName = user.firstName || "";
-        const lastName = user.lastName || "";
-        const email = user.email || "none";
-        addUserInfo("donor", email);
-        addMedicalInfo(email, firstName, lastName, "");
-        window.location.href="../Medical/medicalhomepage.html"
+// // Check if the element exists before adding the event listener
+// const googleRegisterMedicalBtn = document.getElementById(
+//   "google-register-medical"
+// );
+// if (googleRegisterMedicalBtn) {
+//   googleRegisterMedicalBtn.addEventListener("click", () => {
+//     console.log("clicked")
+//     signInWithPopup(auth, googleProvider)
+//       .then((result) => {
+//         const user = result._tokenResponse;
+//         // Extract user details
+//         const firstName = user.firstName || "";
+//         const lastName = user.lastName || "";
+//         const email = user.email || "none";
+//         addUserInfo("donor", email);
+//         addMedicalInfo(email, firstName, lastName, "");
+//         window.location.href="../Medical/medicalhomepage.html"
 
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log("google");
-    // Add your logic here
-  });
-}
-function createNewUser(email, password, firstName, lastName, phoneNumber,userType) {
+//         console.log(result);
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//     console.log("google");
+//     // Add your logic here
+//   });
+// }
+ function createNewUser(email, password, firstName, lastName, phoneNumber,userType) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((credenitails) => {
       console.log("created success");
       addUserInfo(userType, email);
       addMedicalInfo(email, firstName, lastName, phoneNumber);
-      if(userType=="medical"){
-        localStorage.setItem("email",email)
-        localStorage.setItem("userType","medical")
-        window.location.href="../Medical/medicalhomepage.html"
+      // if(userType=="medical"){
+      //   localStorage.setItem("email",email)
+      //   localStorage.setItem("userType","medical")
+      //   window.location.href="../Medical/medicalhomepage.html"
 
-      }else if(userType=="donor"){
-        localStorage.setItem("email",email)
-        localStorage.setItem("userType","medical")
-        window.location.href="../donorHomePage.html"
+      // }else if(userType=="donor"){
+      //   localStorage.setItem("email",email)
+      //   localStorage.setItem("userType","medical")
+      //   window.location.href="../Donor/donorHomePage.html"
     
-      }
+      // }
       
     })
     .catch((err) => {
