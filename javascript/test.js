@@ -56,7 +56,11 @@
      
      });   
      async function updateSpecificDocument(){
+      const email=localStorage.getItem("email") ;
+      console.log(email)
+      const db=getFirestore();
            let ref=doc(db,"MedicalInfo",email)
+           
            await updateDoc(ref,{
             firstName: firstNameInput.value,
             lastName: lastNameInput.value,
@@ -72,9 +76,10 @@
             country: countryInput.value,
             province: provinceInput.value,
             city: cityInput.value,
-            medicalCondition: medicalConditionInput ? medicalConditionInput.value : 'none',
+            medicalCondition:medicalConditionNotesInput ? medicalConditionNotesInput.value : 'none',
             tattoo: tattooInput ? tattooInput.value : 'none',
             medicalConditionNotes: medicalConditionNotesInput.value
+            
                }).then(()=>{
                    console.log("added done")
                }).catch((err)=>{
@@ -84,13 +89,13 @@
           //data.firstName;
           getSpecificDocument()
           async function getSpecificDocument() {
-            let ref = doc(db, "MedicalInfo", "email");
+            let ref = doc(db, "MedicalInfo", localStorage.getItem("email"));
             const data = await getDoc(ref);
             if (data.exists()) {
              
-        document.getElementById('first-name').value = data.data().firstName || '';
+        document.getElementById('first-name').value = data.data().firstname || '';
         document.getElementById('last-name').value = data.data().lastName || '';
-        document.getElementById('phone-number').value = data.data().phoneNumber || '';
+        document.getElementById('phone-number').value = data.data().phone || '';
         document.getElementById('date-of-birth').value = data.data().dateOfBirth || '';
         document.getElementById('id-number').value = data.data().idNumber || '';
         // document.getElementById(data.gender).checked = true; // Assuming gender is stored as either "male" or "female"
@@ -102,11 +107,14 @@
         document.getElementById('country').value = data.data().country || '';
         document.getElementById('province').value = data.data().province || '';
         document.getElementById('city').value = data.data().city || '';
-         document.getElementById('medical-condition-yes').checked = data.data().medicalCondition === 'yes';
-         document.getElementById('medical-condition-no').checked = data.data().medicalCondition === 'no';
-        document.getElementById('tattoo-yes').checked = data.data().tattoo === 'yes';
-        document.getElementById('tattoo-no').checked = data.data().tattoo === 'no';
-        document.getElementById('medical-condition').value = data.data().medicalConditionNotes || '';
+//document.getElementById('medical-condition-yes').checked = data.data().medicalCondition === 'yes';
+  //       document.getElementById('medical-condition-no').checked = data.data().medicalCondition === 'no';
+    //    document.getElementById('tattoo-yes').checked = data.data().tattoo === 'yes';
+     //   document.getElementById('tattoo-no').checked = data.data().tattoo === 'no';
+        console.log(data.data().medicalCondition
+      )
+        document.getElementById('medical-condition').value = data.data().medicalCondition
+        || '';
    
             } else {
               console.log("no data");

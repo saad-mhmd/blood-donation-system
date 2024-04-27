@@ -47,20 +47,23 @@ if (donorRegisterBtn) {
     const phoneNumber = document.getElementById("phone-number").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    createNewUser(email, password, firstName, lastName, phoneNumber,"donor");
+    createNewUser(email, password, firstName, lastName, phoneNumber, "donor");
   });
 }
 
 // Check if the element exists before adding the event listener
 const medicalRegisterBtn = document.getElementById("medical-register-Btn");
 if (medicalRegisterBtn) {
+  
   medicalRegisterBtn.addEventListener("click", () => {
+
+  
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const phoneNumber = document.getElementById("phone-number").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    createNewUser(email, password, firstName, lastName, phoneNumber,"medical");
+    createNewUser(email, password, firstName, lastName, phoneNumber, "medical","test");
   });
 }
 
@@ -80,7 +83,7 @@ if (medicalRegisterBtn) {
 //         console.log(result);
 //         localStorage.setItem("email",email)
 //         localStorage.setItem("userType","medical")
-//         window.location.href="../donorHomePage.html" 
+//         window.location.href="../donorHomePage.html"
 //       })
 //       .catch((error) => {
 //         console.log(error);
@@ -117,12 +120,89 @@ if (medicalRegisterBtn) {
 //     // Add your logic here
 //   });
 // }
- function createNewUser(email, password, firstName, lastName, phoneNumber,userType) {
+function createNewUser(
+  email,
+  password,
+  firstName,
+  lastName,
+  phoneNumber,
+  userType,
+  test
+) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((credenitails) => {
-      console.log("created success");
-      addUserInfo(userType, email);
-      addMedicalInfo(email, firstName, lastName, phoneNumber);
+      if(userType=="medical"){
+        const userInfoPromise = new Promise((resolve, reject) => {
+          addUserInfo(userType, email,phoneNumber)
+            .then(() => resolve())
+            .catch((error) => reject(error));
+        });
+          // Both functions have completed successfully}
+  
+        const medicalInfoPromise = new Promise((resolve, reject) => {
+          addMedicalCenterInfo(email,firstName,lastName,phoneNumber)
+            .then(() => resolve())
+            .catch((error) => reject(error));
+        });
+        Promise.all([userInfoPromise, medicalInfoPromise])
+          .then(() => {
+            // Both functions have completed successfully
+            // Redirect the user based on userType
+            if (userType === "medical") {
+              localStorage.setItem("email", email);
+              localStorage.setItem("userType", "medical");
+              window.location.href = "../Medical/medicalhomepage.html";
+            } else if (userType === "donor") {
+              localStorage.setItem("email", email);
+              localStorage.setItem("userType", "donor");
+              window.location.href = "../Donor/donorHomePage.html";
+            }
+          })
+          .catch((error) => {
+            // Handle errors from either addUserInfo or addMedicalInfo
+            console.error("An error occurred:", error);
+            // Redirect the user to an error page or display an error message
+          });
+      }
+      else{
+        const userInfoPromise = new Promise((resolve, reject) => {
+          addUserInfo(userType, email)
+            .then(() => resolve())
+            .catch((error) => reject(error));
+        });
+          // Both functions have completed successfully}
+  
+        const medicalInfoPromise = new Promise((resolve, reject) => {
+          addMedicalInfo(email, firstName, lastName, phoneNumber)
+            .then(() => resolve())
+            .catch((error) => reject(error));
+        });
+        Promise.all([userInfoPromise, medicalInfoPromise])
+          .then(() => {
+            // Both functions have completed successfully
+            // Redirect the user based on userType
+            if (userType === "medical") {
+              localStorage.setItem("email", email);
+              localStorage.setItem("userType", "medical");
+              window.location.href = "../Medical/medicalhomepage.html";
+            } else if (userType === "donor") {
+              localStorage.setItem("email", email);
+              localStorage.setItem("userType", "donor");
+              window.location.href = "../Donor/donorHomePage.html";
+            }
+          })
+          .catch((error) => {
+            // Handle errors from either addUserInfo or addMedicalInfo
+            console.error("An error occurred:", error);
+            // Redirect the user to an error page or display an error message
+          });
+
+      }
+      // Wrap addUserInfo and addMedicalInfo in promises
+     
+
+      // addUserInfo(userType, email);
+      // addMedicalInfo(email, firstName, lastName, phoneNumber);
       // if(userType=="medical"){
       //   localStorage.setItem("email",email)
       //   localStorage.setItem("userType","medical")
@@ -132,9 +212,8 @@ if (medicalRegisterBtn) {
       //   localStorage.setItem("email",email)
       //   localStorage.setItem("userType","medical")
       //   window.location.href="../Donor/donorHomePage.html"
-    
+
       // }
-      
     })
     .catch((err) => {
       console.log(err);
@@ -167,56 +246,65 @@ async function addMedicalInfo(email, firstName, lastName, phoneNumber) {
       console.log(err);
     });
 }
-function addMedicalCenterInfo() {}
+async function addMedicalCenterInfo(email, firstName, lastName, phoneNumber) {
+  let ref = doc(db, "MedicalCenters", email);
+
+  await setDoc(ref, {
+    firstname: firstName || "",
+    lastName: lastName || "",
+    phone: phoneNumber || "",
+  })
+    .then(() => {
+      console.log("added done to database");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 const loginForm = document.getElementById("login-form");
 if (loginForm) {
-    loginForm.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent form submission
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent form submission
 
-        const email = document.getElementById("email-login").value;
-        const password = document.getElementById("password-login").value;
+    const email = document.getElementById("email-login").value;
+    const password = document.getElementById("password-login").value;
 
-        // Call loginUser function with email and password
-        loginUser(email, password);
-    });
+    // Call loginUser function with email and password
+    loginUser(email, password);
+  });
 }
 function loginUser(email, password) {
   signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-          // Login successful, user information is available in userCredential.user
-          const user = userCredential.user;
-          console.log("Login successful:", user);
-          loginWindow(email);
-          // Redirect or perform further actions here
-      })
-      .catch((error) => {
-          // Login failed, handle error
-          console.error("Login failed:", error);
-      });
+    .then((userCredential) => {
+      // Login successful, user information is available in userCredential.user
+      const user = userCredential.user;
+      console.log("Login successful:", user);
+      loginWindow(email);
+      // Redirect or perform further actions here
+    })
+    .catch((error) => {
+      // Login failed, handle error
+      console.error("Login failed:", error);
+    });
 }
-     async function loginWindow(email){
-        let ref = doc(db, "users",email );
-        const docSnap = await getDoc(ref);
-        if (docSnap.exists()) {
-          const userType=docSnap.data().userType
-          if(userType=="medical"){
-            localStorage.setItem("email",email)
-            localStorage.setItem("userType","medical")
-            window.location.href="../Medical/medicalhomepage.html"
-
-          }else if(userType=="donor"){
-            localStorage.setItem("email",email)
-            localStorage.setItem("userType","medical")
-            window.location.href="../donorHomePage.html"
-        
-          }
-
-          console.log(userType);
-        } else {
-          console.log("no data");
-        }
-
-
-
+async function loginWindow(email) {
+  let ref = doc(db, "users", email);
+  const docSnap = await getDoc(ref);
+  if (docSnap.exists()) {
+    const userType = docSnap.data().userType;
+    if (userType == "medical") {
+      localStorage.setItem("email", email);
+      localStorage.setItem("userType", "medical");
+      window.location.href = "../Medical/medicalhomepage.html";
+    } else if (userType == "donor") {
+      localStorage.setItem("email", email);
+      localStorage.setItem("userType", "medical");
+      window.location.href = "../Donor/donorHomePage.html";
     }
+
+    console.log(userType);
+  } else {
+    console.log("no data");
+  }
+}
