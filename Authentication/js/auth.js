@@ -299,8 +299,8 @@ async function loginWindow(email) {
       window.location.href = "../Medical/medicalhomepage.html";
     } else if (userType == "donor") {
       localStorage.setItem("email", email);
-      localStorage.setItem("userType", "medical");
-      window.location.href = "../Donor/donorHomePage.html";
+      localStorage.setItem("userType", "donor");
+      window.location.href = "../Donor/donorhomepage.html";
     }
 
     console.log(userType);
