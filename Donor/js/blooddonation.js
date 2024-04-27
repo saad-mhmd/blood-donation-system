@@ -38,17 +38,52 @@ const db = getFirestore();
 const auth = getAuth();
 // ------------------------------------------------------------------------
 
+    const countryInput = document.getElementById("country");
+    const provinceInput = document.getElementById("province");
+    const cityInput = document.getElementById("city");
+    const registerButton = document.getElementById("registerBtn");
+
+    // Add event listener to the submit button
+    registerButton.addEventListener("click", function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Retrieve the values from the input fields
+        const country = countryInput.value;
+        const province = provinceInput.value;
+        const city = cityInput.value;
+
+        // Get the value of the checked radio button
+        let bloodQuantity;
+        const radioButtons = document.querySelectorAll('input[name="bloodQuantity"]');
+        radioButtons.forEach(radioButton => {
+            if (radioButton.checked) {
+                bloodQuantity = radioButton.value;
+            }
+        });
+
+        // Log the values to the console
+        console.log("Country:", country);
+        console.log("Province:", province);
+        console.log("City:", city);
+        console.log("Blood Quantity:", bloodQuantity);
+        addDocWithSpecificId(localStorage.getItem("email"),country,province,city,bloodQuantity)
+    });
 
 
 
 
 
-async function addDocWithSpecificId(){
-    let ref=doc(db,"test","document name")
+async function addDocWithSpecificId(email,country,province,city,bloodQuantity){
+    let ref=doc(db,"DonationRequests",email)
 
     const docref = await setDoc(ref, {
-        name:"test",
-        age:"99"
+        country:country,
+        province:province,
+        city:city,
+        bloodQuantity:bloodQuantity,
+        status:"pendding",
+        deleted:"false"
     }).then(()=>{
         console.log("added done")
     }).catch((err)=>{
