@@ -155,7 +155,7 @@ function createNewUser(
             } else if (userType === "donor") {
               localStorage.setItem("email", email);
               localStorage.setItem("userType", "donor");
-              window.location.href = "../Donor/donorHomePage.html";
+              window.location.href = "../Donor/donorhomePage.html";
             }
           })
           .catch((error) => {
