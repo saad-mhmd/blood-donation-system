@@ -54,16 +54,16 @@ if (donorRegisterBtn) {
 // Check if the element exists before adding the event listener
 const medicalRegisterBtn = document.getElementById("medical-register-Btn");
 if (medicalRegisterBtn) {
-  
+
   medicalRegisterBtn.addEventListener("click", () => {
 
-  
+
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const phoneNumber = document.getElementById("phone-number").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    createNewUser(email, password, firstName, lastName, phoneNumber, "medical","test");
+    createNewUser(email, password, firstName, lastName, phoneNumber, "medical", "test");
   });
 }
 
@@ -131,16 +131,16 @@ function createNewUser(
 ) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((credenitails) => {
-      if(userType=="medical"){
+      if (userType == "medical") {
         const userInfoPromise = new Promise((resolve, reject) => {
-          addUserInfo(userType, email,phoneNumber)
+          addUserInfo(userType, email, phoneNumber)
             .then(() => resolve())
             .catch((error) => reject(error));
         });
-          // Both functions have completed successfully}
-  
+        // Both functions have completed successfully}
+
         const medicalInfoPromise = new Promise((resolve, reject) => {
-          addMedicalCenterInfo(email,firstName,lastName,phoneNumber)
+          addMedicalCenterInfo(email, firstName, lastName, phoneNumber)
             .then(() => resolve())
             .catch((error) => reject(error));
         });
@@ -164,14 +164,14 @@ function createNewUser(
             // Redirect the user to an error page or display an error message
           });
       }
-      else{
+      else {
         const userInfoPromise = new Promise((resolve, reject) => {
           addUserInfo(userType, email)
             .then(() => resolve())
             .catch((error) => reject(error));
         });
-          // Both functions have completed successfully}
-  
+        // Both functions have completed successfully}
+
         const medicalInfoPromise = new Promise((resolve, reject) => {
           addMedicalInfo(email, firstName, lastName, phoneNumber)
             .then(() => resolve())
@@ -199,7 +199,7 @@ function createNewUser(
 
       }
       // Wrap addUserInfo and addMedicalInfo in promises
-     
+
 
       // addUserInfo(userType, email);
       // addMedicalInfo(email, firstName, lastName, phoneNumber);
@@ -308,3 +308,68 @@ async function loginWindow(email) {
     console.log("no data");
   }
 }
+
+// saad-branch - we should improve this. Now I think it is loading on every page in Authentication directory
+window.onload = function () {
+  var checkbox = document.getElementById('auto-fill');
+  if (checkbox) {
+    checkbox.addEventListener('click', function () {
+      toggleLocationFields(['longitude', 'latitude', 'address']);
+    });
+  }
+
+  var phoneNumberInput = document.getElementById('phone-number');
+  if (phoneNumberInput) {
+    phoneNumberInput.addEventListener('input', function () {
+      var pattern = new RegExp(phoneNumberInput.pattern);
+      if (pattern.test(phoneNumberInput.value)) {
+        // If the value matches the pattern, change the outline to green
+        phoneNumberInput.style.outline = '2px solid green';
+      } else {
+        // If the value doesn't match the pattern, change the outline back to the default
+        phoneNumberInput.style.outline = '';
+      }
+    });
+  }
+
+  var locationType = document.getElementById('location-type');
+  var addressGroup = document.getElementById('address-group');
+  var coordinatesGroup = document.getElementById('coordinates-group');
+
+  if (locationType) {
+    locationType.addEventListener('change', function () {
+      if (locationType.value === 'address') {
+        addressGroup.style.display = 'block';
+        coordinatesGroup.style.display = 'none';
+      } else {
+        addressGroup.style.display = 'none';
+        coordinatesGroup.style.display = 'flex';
+      }
+    });
+  }
+}
+
+function toggleLocationFields(fields) {
+  fields.forEach(field => {
+    const element = document.getElementById(field);
+    if (element) {
+      element.disabled = !element.disabled;
+    }
+  });
+}
+
+//for the location type
+document.getElementById('registration-form').addEventListener('submit', function (event) {
+  var locationType = document.getElementById('location-type').value;
+  var address = document.getElementById('address').value;
+  var longitude = document.getElementById('longitude').value;
+  var latitude = document.getElementById('latitude').value;
+
+  if (locationType === 'address' && !address) {
+    alert('Please enter an address.');
+    event.preventDefault();
+  } else if (locationType === 'coordinates' && (!longitude || !latitude)) {
+    alert('Please enter both longitude and latitude.');
+    event.preventDefault();
+  }
+});
