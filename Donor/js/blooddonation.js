@@ -78,6 +78,7 @@ async function addDocWithSpecificId(email,country,province,city,bloodQuantity){
     let ref=doc(db,"DonationRequests",email)
 
     const docref = await setDoc(ref, {
+        email:email,
         country:country,
         province:province,
         city:city,

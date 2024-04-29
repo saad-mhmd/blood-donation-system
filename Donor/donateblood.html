@@ -64,7 +64,7 @@
                     </li>
                     <li class="nav-item pr-2">
                         <!-- <a href="../Authentication/login.html" class="nav-link">logout</a> -->
-                        <button class="btn btn-danger p-1">logout</button>
+                        <button id="logout-btn" class="btn btn-danger p-1">logout</button>
 
                       </li>
                 </ul>
@@ -188,6 +188,25 @@
     
   
     <script type="module"  src="./js/blooddonation.js"></script>
+    <script>
+      
+      document.getElementById("logout-btn").addEventListener("click", () => {
+        let email=localStorage.getItem("email")
+        
+        const confirmation = confirm("Are you sure you want to logout?");
+
+        // If user clicks "OK", redirect to index.html
+        if (confirmation) {
+          localStorage.clear();
+          window.location.href = "../index.html";
+          
+        }
+         // Prevent user from navigating back to previous page
+   // Prevent user from navigating back to previous page
+  
+      });
+    
+    </script>
  
   </body>
 </html>
