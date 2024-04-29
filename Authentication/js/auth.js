@@ -52,18 +52,16 @@ if (donorRegisterBtn) {
 }
 
 // Check if the element exists before adding the event listener
-const medicalRegisterBtn = document.getElementById("medical-register-Btn");
+const medicalRegisterBtn = document.getElementById("medical_register_btn");
 if (medicalRegisterBtn) {
-
   medicalRegisterBtn.addEventListener("click", () => {
-
-
-    const firstName = document.getElementById("first-name").value;
-    const lastName = document.getElementById("last-name").value;
-    const phoneNumber = document.getElementById("phone-number").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    createNewUser(email, password, firstName, lastName, phoneNumber, "medical", "test");
+    const medicalNameMedicalCenter = document.getElementById("name_medical_center").value;
+    const medicalPhoneNumber = document.getElementById("phone_number").value;
+    const medicalCountry = document.getElementById("country").value;
+    const medicalProvince = document.getElementById("province").value;
+    const medicalEmail = document.getElementById("email").value;
+    const medicalPassword = document.getElementById("password").value;
+    createNewUser(medicalEmail, medicalPassword, medicalNameMedicalCenter, medicalPhoneNumber, medicalCountry, medicalProvince, "medical", "test");
   });
 }
 
@@ -127,6 +125,12 @@ function createNewUser(
   lastName,
   phoneNumber,
   userType,
+  medicalEmail,
+  medicalPassword,
+  medicalNameMedicalCenter,
+  medicalPhoneNumber,
+  medicalCountry,
+  medicalProvince,
   test
 ) {
   createUserWithEmailAndPassword(auth, email, password)
@@ -318,7 +322,7 @@ window.onload = function () {
     });
   }
 
-  var phoneNumberInput = document.getElementById('phone-number');
+  var phoneNumberInput = document.getElementById('phone_number');
   if (phoneNumberInput) {
     phoneNumberInput.addEventListener('input', function () {
       var pattern = new RegExp(phoneNumberInput.pattern);
@@ -359,7 +363,7 @@ function toggleLocationFields(fields) {
 }
 
 //for the location type
-document.getElementById('registration-form').addEventListener('submit', function (event) {
+document.getElementById('medical_registration_form').addEventListener('submit', function (event) {
   var locationType = document.getElementById('location-type').value;
   var address = document.getElementById('address').value;
   var longitude = document.getElementById('longitude').value;

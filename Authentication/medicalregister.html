@@ -81,42 +81,39 @@
     <h1 style="" class="display-4 section-heading form-gap mb-5 text-center">
       Medical Registration Form
     </h1>
-
   </div>
   <div class="" style="display: flex; flex-direction: column; justify-content: center;align-items: center;">
-
     <div class="container col-sm-12 col-md-11 col-lg-9"
       style=" display: flex; justify-content: center; align-items: center;;">
-
       <section class="container col-md-6  col-sm-10 col-lg-5 ">
         <div class=" mb-5 login-form card shadow-lg bg-card-testing w-60 h-50 "
           style="border-radius: 0px 25px 25px 0px;">
           <div class="card-body my-4  ">
             <div class="container ">
-              <form id="registration-form">
 
+              <form action="#" name="medical_registration_form" id="medical_registration_form" method="post"
+                enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="phone-number" style="display: flex; justify-content: center; font-weight: bold;">Medical
+                  <label for="name_medical_center"
+                    style="display: flex; justify-content: center; font-weight: bold;">Medical
                     Center Name</label>
                   <input type="tel" class="form-control" id="name_medical_center" placeholder="Medical Center Name"
                     required />
                 </div>
-
                 <div class="form-group">
-                  <label for="phone-number">Phone Number</label>
-                  <input type="tel" class="form-control" id="phone-number" pattern="^[0-9]{3}-[0-9]{8}$"
+                  <label for="phone_number">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone_number" pattern="^[0-9]{3}-[0-9]{8}$"
                     aria-describedby="phoneHelp" placeholder="Phone Number" required />
                   <small id="phoneHelp" class="mt-2 form-text text-muted">Format: 123-12345678</small>
                 </div>
-
                 <div class="form-group">
                   <label for="country">Country</label>
                   <select class="form-control" id="country">
                     <option value="" selected disabled>Select Country</option>
-                    <option value="USA">Country 1</option>
-                    <option value="Canada">Country 2</option>
-                    <option value="UK">Country 3</option>
-                    <option value="Australia">Country 4</option>
+                    <option value="country1">Country 1</option>
+                    <option value="country2">Country 2</option>
+                    <option value="country3">Country 3</option>
+                    <option value="country4">Country 4</option>
                   </select>
                 </div>
 
@@ -131,7 +128,7 @@
                   </select>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="location-type">Location Type</label>
                   <select class="form-control" id="location-type">
                     <option value="address">Address</option>
@@ -160,9 +157,9 @@
                     <input class="form-check-input" type="checkbox" id="auto-fill">
                     <label class="form-check-label" for="auto-fill">Auto fill from GPS</label>
                   </div>
-                </div>
+                </div> -->
                 <hr>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <table class="text-center mx-auto">
                     <tr>
                       <th style="width: 20%;">Day</th>
@@ -254,7 +251,7 @@
                       </td>
                     </tr>
                   </table>
-                </div>
+                </div> -->
                 <hr>
 
                 <div class="form-group">
@@ -268,12 +265,13 @@
                     required />
                 </div>
 
+                <div style="display: flex; justify-content: center;">
+                  <input class="btn  shadow-lg " type="submit" id="medical_register_btn" name="medical_register_btn"
+                    value="Register"
+                    style=" padding: 12px 18px; border-radius: 12px;background-color: #df5f65;color: white;font-size: 1.7rem;font-weight: 800;letter-spacing: 1px; ">
+                </div>
+
               </form>
-              <div style="display: flex; justify-content: center;">
-                <button class="btn  shadow-lg " id="medical-register-Btn"
-                  style=" padding: 12px 18px; border-radius: 12px;background-color: #df5f65;color: white;font-size: 1.7rem;font-weight: 800;letter-spacing: 1px; ">Register
-                  Now</button>
-              </div>
             </div>
           </div>
       </section>
@@ -281,6 +279,93 @@
     </div>
   </div>
 
+
+
+  <!-- <script type="module">
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      getDocs, //get all documents inside one collection
+      setDoc,
+      collection,
+      addDoc,
+      updateDoc,
+      deleteDoc,
+      deleteField,
+      query,
+      where,
+      orderBy,
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyA8nOIlWxr5sazq5PS9Ryax3xcB8vfVSjQ",
+      authDomain: "blood-donation-system-0.firebaseapp.com",
+      projectId: "blood-donation-system-0",
+      storageBucket: "blood-donation-system-0.appspot.com",
+      messagingSenderId: "218504344556",
+      appId: "1:218504344556:web:7d1e15ef0e0ed89bea46c9",
+      measurementId: "G-YP5BN4CEN5"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    console.log(app);
+
+
+    document.getElementById("medical_registration_form").addEventListener("submit", function () {
+      event.preventDefault(); // prevent the form from submitting to the server
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var name_medical_center = document.getElementById("name_medical_center").value;
+      var province = document.getElementById("province").value;
+      var country = document.getElementById("country").value;
+      var phone_number = document.getElementById("phone_number").value;
+      // var lastName = document.getElementById("last_name").value;
+
+      //For new registration
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+          alert("Registration successfully!!");
+
+          // Save additional user info in Firestore
+          const db = getFirestore();
+          setDoc(doc(db, "users", user.uid), {
+            name_medical_center: name_medical_center,
+            email: email,
+            phone_number: phone_number,
+            country: country,
+            province: province
+            
+          }).then(() => {
+            console.log("User information saved!");
+          }).catch((error) => {
+            console.error("Error writing user information: ", error);
+          });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          console.log(errorMessage);
+          alert(error);
+        });
+    });
+  </script> -->
   <script type="module" src="./js/auth.js"></script>
 </body>
 
