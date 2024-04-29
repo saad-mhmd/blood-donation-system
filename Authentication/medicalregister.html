@@ -112,6 +112,7 @@
                 <div class="form-group">
                   <label for="country">Country</label>
                   <select class="form-control" id="country">
+                    <option value="" selected disabled>Select Country</option>
                     <option value="USA">Country 1</option>
                     <option value="Canada">Country 2</option>
                     <option value="UK">Country 3</option>
@@ -119,9 +120,10 @@
                   </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="province-group">
                   <label for="province">Province</label>
-                  <select class="form-control" id="province">
+                  <select class="form-control" id="province" disabled>
+                    <option value="" selected disabled>Select Province</option>
                     <option value="province1">Province 1</option>
                     <option value="province2">Province 2</option>
                     <option value="province3">Province 3</option>
@@ -159,95 +161,101 @@
                     <label class="form-check-label" for="auto-fill">Auto fill from GPS</label>
                   </div>
                 </div>
-
+                <hr>
                 <div class="form-group">
-                  <table>
+                  <table class="text-center mx-auto">
                     <tr>
-                      <th>Openning Hours</th>
+                      <th style="width: 20%;">Day</th>
+                      <th style="width: 10%;"></th>
+                      <th style="width: 70%; text-align: center;">Opening Hours</th>
                     </tr>
-                    <tr>
-                      <td>
-                        <label for="monday">Monday</label>
-                      </td>
-                      <td>
-                        <input type="checkbox" id="monday-switch" checked>
-                      </td>
-                      <td>
-                        <input type="time" id="monday-open" required> to <input type="time" id="monday-close" required>
-                      </td>
+                    <tr style="border-bottom: 1px solid black;"></tr>
+                    <td>
+                      <label for="monday">Monday</label>
+                    </td>
+                    <td style="text-align: center;">
+                      <input type="checkbox" id="monday-switch" checked>
+                    </td>
+                    <td style="text-align: center;">
+                      <input type="time" id="monday-open" required> &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                        id="monday-close" required>
+                    </td>
                     </tr>
                     <tr>
                       <td>
                         <label for="tuesday">Tuesday</label>
                       </td>
-                      <td>
+                      <td style="text-align: center;">
                         <input type="checkbox" id="tuesday-switch" checked>
                       </td>
-                      <td>
-                        <input type="time" id="tuesday-open" required> to <input type="time" id="tuesday-close"
-                          required>
+                      <td style="text-align: center;">
+                        <input type="time" id="tuesday-open" required> &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                          id="tuesday-close" required>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <label for="wednesday">Wednesday</label>
                       </td>
-                      <td>
+                      <td style="text-align: center;">
                         <input type="checkbox" id="wednesday-switch" checked>
                       </td>
-                      <td>
-                        <input type="time" id="wednesday-open" required> to <input type="time" id="wednesday-close"
-                          required>
+                      <td style="text-align: center;">
+                        <input type="time" id="wednesday-open" required> &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                          id="wednesday-close" required>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <label for="thursday">Thursday</label>
                       </td>
-                      <td>
+                      <td style="text-align: center;">
                         <input type="checkbox" id="thursday-switch" checked>
                       </td>
-                      <td>
-                        <input type="time" id="thursday-open" required> to <input type="time" id="thursday-close"
-                          required>
+                      <td style="text-align: center;">
+                        <input type="time" id="thursday-open" required> &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                          id="thursday-close" required>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <label for="friday">Friday</label>
                       </td>
-                      <td>
+                      <td style="text-align: center;">
                         <input type="checkbox" id="friday-switch" checked>
                       </td>
-                      <td>
-                        <input type="time" id="friday-open" required> to <input type="time" id="friday-close" required>
+                      <td style="text-align: center;">
+                        <input type="time" id="friday-open" required> &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                          id="friday-close" required>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <label for="saturday">Saturday</label>
                       </td>
-                      <td>
+                      <td style="text-align: center;">
                         <input type="checkbox" id="saturday-switch" checked>
                       </td>
-                      <td>
-                        <input type="time" id="saturday-open" required> to <input type="time" id="saturday-close"
-                          required>
+                      <td style="text-align: center;">
+                        <input type="time" id="saturday-open" required> &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                          id="saturday-close" required>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <label for="sunday">Sunday</label>
                       </td>
-                      <td>
+                      <td style="text-align: center;">
                         <input type="checkbox" id="sunday-switch" checked>
                       </td>
-                      <td>
-                        <input type="time" id="sunday-open" required> to <input type="time" id="sunday-close" required>
+                      <td style="text-align: center;">
+                        <input type="time" id="sunday-open" required> &nbsp;&nbsp;to&nbsp;&nbsp; <input type="time"
+                          id="sunday-close" required>
                       </td>
                     </tr>
                   </table>
                 </div>
+                <hr>
 
                 <div class="form-group">
                   <label for="email">Email</label>

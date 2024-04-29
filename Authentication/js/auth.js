@@ -373,3 +373,63 @@ document.getElementById('registration-form').addEventListener('submit', function
     event.preventDefault();
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const countrySelect = document.getElementById("country");
+  if (countrySelect) {
+    countrySelect.addEventListener('change', toggleProvinceSelect);
+  }
+});
+
+function toggleProvinceSelect() {
+  var countrySelect = document.getElementById("country");
+  var provinceSelect = document.getElementById("province");
+  if (countrySelect.value === "") {
+    provinceSelect.disabled = true;
+  } else {
+    provinceSelect.disabled = false;
+  }
+}
+
+// for the openning and closing time
+function toggleTimeInputs(checkboxId, openId, closeId) {
+  const checkbox = document.getElementById(checkboxId);
+  const openInput = document.getElementById(openId);
+  const closeInput = document.getElementById(closeId);
+
+  if (checkbox.checked) {
+    openInput.disabled = false;
+    closeInput.disabled = false;
+  } else {
+    openInput.disabled = true;
+    closeInput.disabled = true;
+  }
+}
+document.getElementById("monday-switch").addEventListener("change", function () {
+  toggleTimeInputs("monday-switch", "monday-open", "monday-close");
+});
+
+document.getElementById("tuesday-switch").addEventListener("change", function () {
+  toggleTimeInputs("tuesday-switch", "tuesday-open", "tuesday-close");
+});
+
+document.getElementById("wednesday-switch").addEventListener("change", function () {
+  toggleTimeInputs("wednesday-switch", "wednesday-open", "wednesday-close");
+});
+
+document.getElementById("thursday-switch").addEventListener("change", function () {
+  toggleTimeInputs("thursday-switch", "thursday-open", "thursday-close");
+});
+
+document.getElementById("friday-switch").addEventListener("change", function () {
+  toggleTimeInputs("friday-switch", "friday-open", "friday-close");
+});
+
+document.getElementById("saturday-switch").addEventListener("change", function () {
+  toggleTimeInputs("saturday-switch", "saturday-open", "saturday-close");
+});
+
+document.getElementById("sunday-switch").addEventListener("change", function () {
+  toggleTimeInputs("sunday-switch", "sunday-open", "sunday-close");
+});
