@@ -55,13 +55,12 @@ if (donorRegisterBtn) {
 const medicalRegisterBtn = document.getElementById("medical_register_btn");
 if (medicalRegisterBtn) {
   medicalRegisterBtn.addEventListener("click", () => {
-    const medicalNameMedicalCenter = document.getElementById("name_medical_center").value;
-    const medicalPhoneNumber = document.getElementById("phone_number").value;
-    const medicalCountry = document.getElementById("country").value;
-    const medicalProvince = document.getElementById("province").value;
-    const medicalEmail = document.getElementById("email").value;
-    const medicalPassword = document.getElementById("password").value;
-    createNewUser(medicalEmail, medicalPassword, medicalNameMedicalCenter, medicalPhoneNumber, medicalCountry, medicalProvince, "medical", "test");
+    const firstName = document.getElementById("first-name").value;
+    const lastName = document.getElementById("last-name").value;
+    const phoneNumber = document.getElementById("phone-number").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    createNewUser(email, password, firstName, lastName, phoneNumber, "medical", "test");
   });
 }
 
@@ -125,12 +124,6 @@ function createNewUser(
   lastName,
   phoneNumber,
   userType,
-  medicalEmail,
-  medicalPassword,
-  medicalNameMedicalCenter,
-  medicalPhoneNumber,
-  medicalCountry,
-  medicalProvince,
   test
 ) {
   createUserWithEmailAndPassword(auth, email, password)
@@ -239,7 +232,7 @@ async function addMedicalInfo(email, firstName, lastName, phoneNumber) {
   let ref = doc(db, "MedicalInfo", email);
 
   await setDoc(ref, {
-    firstname: firstName || "",
+    firstName: firstName || "",
     lastName: lastName || "",
     phone: phoneNumber || "",
   })
@@ -254,7 +247,7 @@ async function addMedicalCenterInfo(email, firstName, lastName, phoneNumber) {
   let ref = doc(db, "MedicalCenters", email);
 
   await setDoc(ref, {
-    firstname: firstName || "",
+    firstName: firstName || "",
     lastName: lastName || "",
     phone: phoneNumber || "",
   })
