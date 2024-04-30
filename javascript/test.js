@@ -93,7 +93,7 @@
             const data = await getDoc(ref);
             if (data.exists()) {
              
-        document.getElementById('first-name').value = data.data().firstname || '';
+        document.getElementById('first-name').value = data.data().firstName || '';
         document.getElementById('last-name').value = data.data().lastName || '';
         document.getElementById('phone-number').value = data.data().phone || '';
         document.getElementById('date-of-birth').value = data.data().dateOfBirth || '';
