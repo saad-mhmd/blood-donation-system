@@ -55,12 +55,30 @@ if (donorRegisterBtn) {
 const medicalRegisterBtn = document.getElementById("medical_register_btn");
 if (medicalRegisterBtn) {
   medicalRegisterBtn.addEventListener("click", () => {
-    const firstName = document.getElementById("first-name").value;
-    const lastName = document.getElementById("last-name").value;
-    const phoneNumber = document.getElementById("phone-number").value;
+    const medicalNameMedicalCenter = document.getElementById("name_medical_center").value;
+    const medicalPhoneNumber = document.getElementById("phone_number").value;
+    const medicalCountry = document.getElementById("country").value;
+    const medicalProvince = document.getElementById("province").value;
+    const medicalAddress = document.getElementById("address").value;
+    const medicalLongitude = document.getElementById("longitude").value;
+    const medicalLatitude = document.getElementById("latitude").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    createNewUser(email, password, firstName, lastName, phoneNumber, "medical", "test");
+    const mondayOpen = document.getElementById("monday-open").value;
+    const mondayClose = document.getElementById("monday-close").value;
+    const tuesdayOpen = document.getElementById("tuesday-open").value;
+    const tuesdayClose = document.getElementById("tuesday-close").value;
+    const wednesdayOpen = document.getElementById("wednesday-open").value;
+    const wednesdayClose = document.getElementById("wednesday-close").value;
+    const thursdayOpen = document.getElementById("thursday-open").value;
+    const thursdayClose = document.getElementById("thursday-close").value;
+    const fridayOpen = document.getElementById("friday-open").value;
+    const fridayClose = document.getElementById("friday-close").value;
+    const saturdayOpen = document.getElementById("saturday-open").value;
+    const saturdayClose = document.getElementById("saturday-close").value;
+    const sundayOpen = document.getElementById("sunday-open").value;
+    const sundayClose = document.getElementById("sunday-close").value;
+    createNewUser(email, password, '', '', '', "medical", medicalNameMedicalCenter, medicalCountry, medicalPhoneNumber, medicalProvince, medicalAddress, medicalLongitude, medicalLatitude, mondayOpen, mondayClose, tuesdayOpen, tuesdayClose, wednesdayOpen, wednesdayClose, thursdayOpen, thursdayClose, fridayOpen, fridayClose, saturdayOpen, saturdayClose, sundayOpen, sundayClose);
   });
 }
 
@@ -117,6 +135,7 @@ if (medicalRegisterBtn) {
 //     // Add your logic here
 //   });
 // }
+
 function createNewUser(
   email,
   password,
@@ -124,12 +143,34 @@ function createNewUser(
   lastName,
   phoneNumber,
   userType,
+  medicalNameMedicalCenter,
+  medicalPhoneNumber,
+  medicalCountry,
+  medicalProvince,
+  medicalAddress,
+  medicalLongitude,
+  medicalLatitude,
+  mondayOpen,
+  mondayClose,
+  tuesdayOpen,
+  tuesdayClose,
+  wednesdayOpen,
+  wednesdayClose,
+  thursdayOpen,
+  thursdayClose,
+  fridayOpen,
+  fridayClose,
+  saturdayOpen,
+  saturdayClose,
+  sundayOpen,
+  sundayClose,
   test
 ) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((credenitails) => {
       if (userType == "medical") {
         const userInfoPromise = new Promise((resolve, reject) => {
+          console.log("if user is medical here, before addUserInfo function");
           addUserInfo(userType, email, phoneNumber)
             .then(() => resolve())
             .catch((error) => reject(error));
@@ -137,7 +178,7 @@ function createNewUser(
         // Both functions have completed successfully}
 
         const medicalInfoPromise = new Promise((resolve, reject) => {
-          addMedicalCenterInfo(email, firstName, lastName, phoneNumber)
+          addMedicalCenterInfo(email, medicalNameMedicalCenter, medicalPhoneNumber, medicalCountry, medicalProvince, medicalAddress, medicalLongitude, medicalLatitude, mondayOpen, mondayClose, tuesdayOpen, tuesdayClose, wednesdayOpen, wednesdayClose, thursdayOpen, thursdayClose, fridayOpen, fridayClose, saturdayOpen, saturdayClose, sundayOpen, sundayClose)
             .then(() => resolve())
             .catch((error) => reject(error));
         });
@@ -243,13 +284,32 @@ async function addMedicalInfo(email, firstName, lastName, phoneNumber) {
       console.log(err);
     });
 }
-async function addMedicalCenterInfo(email, firstName, lastName, phoneNumber) {
+
+async function addMedicalCenterInfo(email, medicalNameMedicalCenter, medicalCountry, medicalPhoneNumber, medicalProvince, medicalAddress, medicalLongitude, medicalLatitude, mondayOpen, mondayClose, tuesdayOpen, tuesdayClose, wednesdayOpen, wednesdayClose, thursdayOpen, thursdayClose, fridayOpen, fridayClose, saturdayOpen, saturdayClose, sundayOpen, sundayClose) {
   let ref = doc(db, "MedicalCenters", email);
 
   await setDoc(ref, {
-    firstName: firstName || "",
-    lastName: lastName || "",
-    phone: phoneNumber || "",
+    medicalNameMedicalCenter: medicalNameMedicalCenter || "",
+    medicalCountry: medicalCountry || "",
+    medicalPhoneNumber: medicalPhoneNumber || "",
+    medicalProvince: medicalProvince || "",
+    medicalAddress: medicalAddress || "",
+    medicalLongitude: medicalLongitude || "",
+    medicalLatitude: medicalLatitude || "",
+    mondayOpen: mondayOpen || "",
+    mondayClose: mondayClose || "",
+    tuesdayOpen: tuesdayOpen || "",
+    tuesdayClose: tuesdayClose || "",
+    wednesdayOpen: wednesdayOpen || "",
+    wednesdayClose: wednesdayClose || "",
+    thursdayOpen: thursdayOpen || "",
+    thursdayClose: thursdayClose || "",
+    fridayOpen: fridayOpen || "",
+    fridayClose: fridayClose || "",
+    saturdayOpen: saturdayOpen || "",
+    saturdayClose: saturdayClose || "",
+    sundayOpen: sundayOpen || "",
+    sundayClose: sundayClose || "",
   })
     .then(() => {
       console.log("added done to database");
@@ -406,27 +466,21 @@ function toggleTimeInputs(checkboxId, openId, closeId) {
 document.getElementById("monday-switch").addEventListener("change", function () {
   toggleTimeInputs("monday-switch", "monday-open", "monday-close");
 });
-
 document.getElementById("tuesday-switch").addEventListener("change", function () {
   toggleTimeInputs("tuesday-switch", "tuesday-open", "tuesday-close");
 });
-
 document.getElementById("wednesday-switch").addEventListener("change", function () {
   toggleTimeInputs("wednesday-switch", "wednesday-open", "wednesday-close");
 });
-
 document.getElementById("thursday-switch").addEventListener("change", function () {
   toggleTimeInputs("thursday-switch", "thursday-open", "thursday-close");
 });
-
 document.getElementById("friday-switch").addEventListener("change", function () {
   toggleTimeInputs("friday-switch", "friday-open", "friday-close");
 });
-
 document.getElementById("saturday-switch").addEventListener("change", function () {
   toggleTimeInputs("saturday-switch", "saturday-open", "saturday-close");
 });
-
 document.getElementById("sunday-switch").addEventListener("change", function () {
   toggleTimeInputs("sunday-switch", "sunday-open", "sunday-close");
 });
