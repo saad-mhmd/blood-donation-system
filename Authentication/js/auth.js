@@ -47,6 +47,7 @@ if (donorRegisterBtn) {
     const phoneNumber = document.getElementById("phone-number").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    
     createNewUser(email, password, firstName, lastName, phoneNumber, "donor");
   });
 }

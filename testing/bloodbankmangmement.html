@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Responsive Dashborad</title>
+    <style>
+        #blood-bank-table button {
+                /* Your CSS styles here */
+            padding: 6px 10px;
+            background-color: #773133;
+            color: white;
+            border-radius: 5px;
+        }
+        #blood-bank-table input {
+            border: 1px solid #773133;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+    </style>
   </head>
   <body>
     <div class="container">
@@ -16,35 +31,35 @@
           <!-- brand section start-->
           <li>
             <a href="#">
-              <span class="icon"><ion-icon name=""></ion-icon></span>
+              <span class="icon"><ion-icon name="logo-apple"></ion-icon></span>
               <span class="title">Blood bank</span>
             </a>
           </li>
           <!-- brand section end  -->
-          <li class="" >
+          <li class="">
             <a href="index.html">
               <span class="icon"><ion-icon name="home"></ion-icon></span>
               <span class="title">Dashboard</span>
             </a>
           </li>
-          <li id="reguest-page" class="hovered" >
-            <a href="dashboardfragment.html">
+          <li id="reguest-page">
+            <a href="requests.html">
               <span class="icon"><ion-icon name="people"></ion-icon></span>
-              <span class="title"  >Reguests</span>
+              <span class="title">Reguests and history</span>
+            </a>
+          </li>
+          <li class="hovered">
+            <a href="bloodbankmangmement.html">
+              <span class="icon"><ion-icon name="chatboxes"></ion-icon></span>
+              <span class="title">bloodbankmangmement</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <span class="icon"><ion-icon name="chatboxes"></ion-icon></span>
-              <span class="title"> search for a blood </span>
-            </a>
-          </li>
-          <li>
-            <a href="bloodbankmangmement.html">
               <span class="icon"
                 ><ion-icon name="help-circle-outline"></ion-icon
               ></span>
-              <span class="title">BloodBank Mangment</span>
+              <span class="title">title </span>
             </a>
           </li>
           <li>
@@ -70,7 +85,7 @@
       <!-- left side and navigation end here -->
 
       <!-- main section start here -->
-      <div id="main-content" >
+      <div id="main-content">
         <div id="main" class="main">
           <!-- topbar start -->
           <div class="topbar">
@@ -87,18 +102,20 @@
             </div> -->
             <!-- user -->
             <div class="user">
-              <img src="./img/img5.jpg" alt="user-img" />
+              <!-- <img src="./img/img5.jpg" alt="user-img" /> -->
             </div>
           </div>
           <!-- topbar end  -->
-  
+
           <!--overview card section start -->
           <div class="cardbox">
             <!-- single card -->
             <div class="card">
               <div>
-                <div class="numbers"><span class="counter" id="users-counter">1 </span></div>
-                <div class="cardname">Reguests</div>
+                <div class="numbers">
+                  <span class="counter" id="users-counter">1 </span>
+                </div>
+                <div class="cardname">Users test</div>
               </div>
               <div class="iconbox">
                 <ion-icon name="eye"></ion-icon>
@@ -107,7 +124,9 @@
             <!-- single card -->
             <div class="card">
               <div>
-                <div class="numbers"> <span id="donation-counter" >dash</span></div>
+                <div class="numbers">
+                  <span id="donation-counter">dash</span>
+                </div>
                 <div class="cardname">Donation reguest</div>
               </div>
               <div class="iconbox">
@@ -125,125 +144,118 @@
               </div>
             </div>
             <!-- single card -->
-           
           </div>
           <!--overview card section end -->
-  
+
           <!-- chart area start here  -->
-          <!-- <div class="graphbox" >
-            <div class="box">
+          <div class="graphbox" style="" >
+            <div class="box" style="display: none ;">
               <canvas id="myChart"></canvas>
             </div>
             <div class="box">
-              <canvas id="myChart2"></canvas>
+              <canvas id="myChart2" style="width: 200px;"></canvas>
             </div>
-          </div> -->
+          </div>
           <!-- chat area ends here -->
-  
+
           <!-- order details list start  -->
           <div class="details">
             <div class="recentorders">
               <div class="cardheader">
-                <h2>Recent Requests</h2>
-                <!-- <a href="#" class="btn">filter</a> -->
-                <select class="btn" id="spinner">
-                  <option value="all">All</option>
-                  <option value="pinding">pinding</option>
-                  <option value="accepted">accepted</option>
-                  <option value="rejected">rejected</option>
-                </select>
+                <h2>Recent Orders</h2>
+                <!-- <a href="#" class="btn">View All</a> -->
               </div>
               <table>
                 <thead>
                   <tr>
-                    <td>FullName</td>
-                    <td>pints</td>
-                    <td>bloodType</td>
-                    <td>City</td>
-                    <td>Status</td>
-                    <td>social</td>
-                    <td>More Info</td>
-                    <td>action</td>
+                    <td>BloodType</td>
+                    <td>Pints</td>
+                    <td> +?-</td>
+                    <td>update</td>
                   </tr>
                 </thead>
-                <tbody id="tablebody">
+                <tbody id="blood-bank-table">
                   <tr>
-                    <td>Television</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Deliverd</span></td>
+                    <td id="">A+</td>
+                    <td id="pints-A+">200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button id="btn-A+" class="btn"  >update</button>
                   </tr>
                   <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
+                    <td id="">A-</td>
+                    <td id="pints-A-">200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button id="btn-A-"" >update</button>
                   </tr>
                   <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
+                    <td id="">B+</td>
+                    <td id="pints-B+" >200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button id="btn-B+"" >update</button>
                   </tr>
                   <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status return">Return</span></td>
+                    <td id="">B-</td>
+                    <td id="pints-B-">200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button id="btn-B-"" >update</button>
                   </tr>
                   <tr>
-                    <td>Television</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Deliverd</span></td>
+                    <td id="">AB+</td>
+                    <td id="pints-AB+" >200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button id="btn-AB+" >update</button>
                   </tr>
                   <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
+                    <td id="">AB-</td>
+                    <td id="pints-AB-">200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button class="btn" id="btn-AB-" >update</button>
                   </tr>
                   <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
+                    <td id="">O+</td>
+                    <td id="pints-O+" >200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button id="btn-O+" >update</button>
                   </tr>
                   <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status return">Return</span></td>
+                    <td id="">O-</td>
+                    <td id="pints-O-">200</td>
+                    <td>
+                        <input style="width: 50%;" type="number" step="1" value="0">
+                    </td>
+                    <td>
+                        <button id="btn-O-" >update</button>
                   </tr>
-                  <tr>
-                    <td>Television</td>
-                    <td>$1200</td>
-                    <td>Paid</td>
-                    <td><span class="status delivered">Deliverd</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status inprogress">In Progress</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status pending">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <td>Air Conditioner</td>
-                    <td>$1200</td>
-                    <td>Due</td>
-                    <td><span class="status return">Return</span></td>
-                  </tr>
+                
+                  
                 </tbody>
               </table>
             </div>
-  
+
             <!-- new customers start -->
+         
+         
             <!-- <div class="recentcustomers">
               <div class="cardheader">
                 <h2>Recent Customers</h2>
@@ -382,23 +394,21 @@
                 </tr>
               </table>
             </div> -->
-            <!-- new customers end  -->
-          </div>
+            <!-- new customers end 
+          </div> -->
           <!-- order details list end  -->
-        </div>     
+        </div>
       </div>
-      
-    
+
       <!-- main section end here -->
     </div>
-
    
+
     <!-- custom script  -->
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <!-- chart js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-  
-   
+
     <!-- <script>
       // Function to load content into main content area
       function loadContent(page) {
@@ -425,15 +435,24 @@
       };
     </script> -->
     <!-- <script type="module" src="./js/main.js"></script> -->
-    <script >let navigation = document.querySelector('.navigation'),
-      toggle = document.querySelector(".toggle"),
-      main = document.querySelector(".main")
+    <!-- <script type="module" src="testing.js"></script> -->
+<script>
+
+
+</script>
+<script>
+      let navigation = document.querySelector(".navigation"),
+        toggle = document.querySelector(".toggle"),
+        main = document.querySelector(".main");
+
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+
+      }
+    </script>
+    <script type="module" src="./js/bloodbank.js"></script>
+   
   
-  toggle.onclick = function () {
-      navigation.classList.toggle("active")
-      main.classList.toggle('active')
-  }</script>
-    <script type="module" src="./js/request.js"></script>
-    
   </body>
 </html>
