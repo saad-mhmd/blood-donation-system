@@ -1,4 +1,5 @@
 let info = [];
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
 import {
@@ -38,18 +39,20 @@ import {
 const db = getFirestore();
 const auth = getAuth();
 const donationRequestCollectionRef = collection(db, "DonationRequests");
-const datareguest = [];
+let datareguest = [];
 document.getElementById("tablebody").innerHTML = "";
 
 getReguests();
 
 async function getReguests() {
+  datareguest=[];
   try {
     const q = query(
       donationRequestCollectionRef,
       //   where("status", "==", "pendding"),
       where("centerName", "==", "AUB")
     );
+    console.log(q)
 
     const querySnapshot = await getDocs(q);
     const counter = querySnapshot.size;
@@ -71,9 +74,42 @@ async function getReguests() {
   filltable();
   //   filltable(datareguest);
 }
+document.getElementById("spinner").addEventListener("change",()=>{
+  const spinner = document.getElementById("spinner");
+  
+  // Get the selected option
+  const selectedOption = spinner.options[spinner.selectedIndex];
+  
+  // Get the value and text of the selected option
+  const selectedValue = selectedOption.value;
+  switch (selectedValue) {
+    case "pinding":
+      getPindingdata();
+      break;
+    case "accepted":
+      getAcceptedData();
+      break;
+    case "rejected":
+      getRejectedData();
+      break;
+    case "all":
+      getReguests();
+      break;
+    // Add more cases as needed
+    default:
+    // Code to execute if expression doesn't match any case
+  }
+  
+  // Log the selected value
+
+}) 
+  // Get the select element
+ 
 
 async function filltable() {
   console.log(datareguest);
+  document.getElementById("tablebody").innerHTML = '';
+
 
   for (let i = 0; i < datareguest.length; i++) {
     console.log(datareguest[i].email);
@@ -81,13 +117,30 @@ async function filltable() {
     const docSnap = await getDoc(ref);
     if (docSnap.exists()) {
       info.push(docSnap.data());
+      let statusStyle = datareguest[i].status;
+      switch (statusStyle) {
+        case "pendding":
+          statusStyle = "status pending";
+          break;
+        case "rejected":
+          statusStyle = "status return";
+          break;
+        case "accepted":
+          statusStyle = "status delivered";
+          break;
+        // Add more cases as needed
+        default:
+        // Code to execute if expression doesn't match any case
+      }
+      console.log(statusStyle)
+
       let content = `
       <tr>
-      <td>${info[i].firstName + info[0].lastName}</td>
+      <td >${info[i].firstName + info[0].lastName}</td>
       <td>${datareguest[i].bloodQuantity}</td>
       <td>${info[i].bloodType}</td>
       <td>${datareguest[i].city}</td>
-      <td><span class="status inprogress">${datareguest[i].status}</span></td>
+      <td><span class="${statusStyle}">${datareguest[i].status}</span></td>
      <td>${info[i].phoneNumber}</td>
      <td>action</td>
      </tr>`;
@@ -98,4 +151,93 @@ async function filltable() {
     // console.log(info);
   }
 }
-console.log(info);
+async function getPindingdata(){
+  datareguest=[]
+  try {
+    const q = query(
+      donationRequestCollectionRef,
+         where("status", "==", "pendding"),
+      where("centerName", "==", "AUB")
+    );
+    console.log(q)
+
+    const querySnapshot = await getDocs(q);
+    const counter = querySnapshot.size;
+    document.getElementById("users-counter").innerHTML = counter;
+
+    querySnapshot.forEach((doc) => {
+      datareguest.push(doc.data());
+      datareguest.email = doc.data().email;
+    });
+    // console.log(datareguest);
+
+    let donationCount = querySnapshot.size;
+    // document.getElementById("donation-counter").innerHTML = donationCount;
+
+    // Log or use the 'data' array as needed
+  } catch (error) {
+    console.error("Error getting documents: ", error);
+  }
+  filltable();
+
+}
+async function getAcceptedData(){
+  datareguest=[]
+  try {
+    const q = query(
+      donationRequestCollectionRef,
+         where("status", "==", "accepted"),
+      where("centerName", "==", "AUB")
+    );
+    console.log(q)
+
+    const querySnapshot = await getDocs(q);
+    const counter = querySnapshot.size;
+    document.getElementById("users-counter").innerHTML = counter;
+
+    querySnapshot.forEach((doc) => {
+      datareguest.push(doc.data());
+      datareguest.email = doc.data().email;
+    });
+    // console.log(datareguest);
+
+    let donationCount = querySnapshot.size;
+    // document.getElementById("donation-counter").innerHTML = donationCount;
+
+    // Log or use the 'data' array as needed
+  } catch (error) {
+    console.error("Error getting documents: ", error);
+  }
+  filltable();
+
+}
+async function getRejectedData(){
+  datareguest=[]
+  try {
+    const q = query(
+      donationRequestCollectionRef,
+         where("status", "==", "rejected"),
+      where("centerName", "==", "AUB")
+    );
+    console.log(q)
+
+    const querySnapshot = await getDocs(q);
+    const counter = querySnapshot.size;
+    document.getElementById("users-counter").innerHTML = counter;
+
+    querySnapshot.forEach((doc) => {
+      datareguest.push(doc.data());
+      datareguest.email = doc.data().email;
+    });
+    // console.log(datareguest);
+
+    let donationCount = querySnapshot.size;
+    // document.getElementById("donation-counter").innerHTML = donationCount;
+
+    // Log or use the 'data' array as needed
+  } catch (error) {
+    console.error("Error getting documents: ", error);
+  }
+  filltable();
+
+}
